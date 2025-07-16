@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allods Guides | База знаний</title>
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: #0a0a12 url('https://allods.ru/local/templates/main/images/bg.jpg') fixed;
+            color: #e0e0ff;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 30, 0.85);
+            z-index: -1;
+        }
+        
+        /* Навигация */
+        nav {
+            background: linear-gradient(to right, #1a0b2e, #2d0b3a);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid #4a1a6a;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav a {
+            color: #d8b3ff;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+            background: rgba(90, 30, 120, 0.3);
+        }
+        
+        nav a:hover, nav a.active {
+            background: rgba(150, 70, 200, 0.3);
+            border-color: #a45bd6;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(164, 91, 214, 0.5);
+        }
+        
+        /* Основной контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Заголовки */
+        h1 {
+            color: #d8b3ff;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #a45bd6, transparent);
+        }
+        
+        /* Сетка билдов 4x11 */
+        .builds-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        /* Стиль кнопок из uiverse.io/vinodjangid07/pink-cheetah-68 */
+        .build-btn {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(45deg, #ff3d77, #ff2d6d, #ff1d63);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 45, 109, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .build-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 45, 109, 0.6);
+        }
+        
+        .build-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        
+        .build-btn:hover::before {
+            left: 100%;
+        }
+        
+        .build-btn .build-number {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Секции */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Главная страница */
+        #home {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        #home p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            color: #c0c0ff;
+            font-size: 1.1rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1000px) {
+            .builds-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .builds-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav ul {
+                gap: 0.8rem;
+            }
+            
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .builds-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav>
+        <ul>
+            <li><a href="#" class="nav-link active" data-section="home">Главная</a></li>
+            <li><a href="#" class="nav-link" data-section="news">Новости</a></li>
+            <li><a href="#" class="nav-link" data-section="builds">Билды</a></li>
+            <li><a href="#" class="nav-link" data-section="screenshots">Скриншоты</a></li>
+            <li><a href="#" class="nav-link" data-section="contacts">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- Главная -->
+        <section id="home" class="section active">
+            <h1>Allods Online - База знаний</h1>
+            <p>Добро пожаловать в нашу коллекцию билдов и руководств по Allods Online. Здесь вы найдёте 44 проверенных сборки для различных классов и стилей игры.</p>
+            <p>Выберите раздел "Билды", чтобы увидеть полный список доступных вариантов персонажей.</p>
+        </section>
+        <div class="game-description">
+    <h2>Что такое Allods Online?</h2>
+    <p>Это бесплатная MMORPG с уникальной вселенной, где магия встречается с технологиями. Игра предлагает:</p>
+    <ul>
+        <li>➡️ <strong>Гибкую систему классов</strong> — комбинируйте 2 базовых класса для уникального стиля</li>
+        <li>➡️ <strong>Астральные корабли</strong> — исследуйте руины древних цивилизаций с друзьями</li>
+        <li>➡️ <strong>Гильдейские войны</strong> — сражайтесь за контроль над астралом</li>
+        <li>➡️ <strong>12 рас</strong> — от благородных эльфов до хитрых гоблинов</li>
+    </ul>
+    <p>Наш сайт поможет быстро найти ответы на любые вопросы по игре!</p>
+</div>
+        </section>
+        
+        <!-- Новости -->
+        <section id="news" class="section">
+            <h1>Последние новости</h1>
+            <p>Здесь будут появляться обновления игры и новые гайды...</p>
+        </section>
+        
+        <!-- Билды -->
+        <section id="builds" class="section">
+            <h1>Коллекция билдов (44 варианта)</h1>
+            <p>Выберите интересующий вас билд из списка:</p>
+            
+            <div class="builds-grid">
+                <!-- Билд 1 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #1</span>
+                    Маг Хаоса
+                </button>
+                
+                <!-- Билд 2 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #2</span>
+                    Паладин Света
+                </button>
+                
+                <!-- Билд 3 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #3</span>
+                    Тёмный Жнец
+                </button>
+                
+                <!-- Билд 4 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #4</span>
+                    Стрелок Дальнего Боя
+                </button>
+                
+                <!-- Билд 5 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #5</span>
+                    Некромант-призыватель
+                </button>
+                
+                <!-- Билд 6 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #6</span>
+                    Вор-диверсант
+                </button>
+                
+                <!-- Билд 7 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #7</span>
+                    Берсерк-разрушитель
+                </button>
+                
+                <!-- Билд 8 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #8</span>
+                    Целитель Сфер
+                </button>
+                
+                <!-- Билд 9 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #9</span>
+                    Баффер-заклинатель
+                </button>
+                
+                <!-- Билд 10 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #10</span>
+                    Друид-оборотень
+                </button>
+                
+                <!-- Билд 11 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #11</span>
+                    Алхимик-изобретатель
+                </button>
+                
+                <!-- Билд 12 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #12</span>
+                    Танк-защитник
+                </button>
+                
+                <!-- Билд 13 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #13</span>
+                    Боевой маг
+                </button>
+                
+                <!-- Билд 14 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #14</span>
+                    Охотник на демонов
+                </button>
+                
+                <!-- Билд 15 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #15</span>
+                    Рыцарь Тьмы
+                </button>
+                
+                <!-- Билд 16 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #16</span>
+                    Инквизитор
+                </button>
+                
+                <!-- Билд 17 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #17</span>
+                    Метатель клинков
+                </button>
+                
+                <!-- Билд 18 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #18</span>
+                    Инженер-механик
+                </button>
+                
+                <!-- Билд 19 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #19</span>
+                    Бард-импровизатор
+                </button>
+                
+                <!-- Билд 20 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #20</span>
+                    Монах-духовидец
+                </button>
+                
+                <!-- Билд 21-44 -->
+                <!-- Для краткости показаны не все, но в реальном коде их 44 -->
+                <button class="build-btn">
+                    <span class="build-number">Билд #21</span>
+                    Охотник на трофеи
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #22</span>
+                    Пиромант-поджигатель
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #23</span>
+                    Ледяной колдун
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #24</span>
+                    Грозовой маг
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #25</span>
+                    Гравитационный маг
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #26</span>
+                    Телекинетик
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #27</span>
+                    Иллюзионист-мистификатор
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #28</span>
+                    Демонолог-заклинатель
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #29</span>
+                    Ангел-хранитель
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #30</span>
+                    Самурай-фехтовальщик
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #31</span>
+                    Теневой ниндзя
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #32</span>
+                    Викинг-завоеватель
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #33</span>
+                    Гладиатор арены
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #34</span>
+                    Копейщик-кавалерист
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #35</span>
+                    Двуручный воин
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #36</span>
+                    Фехтовальщик-дуэлянт
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #37</span>
+                    Мушкетёр
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #38</span>
+                    Арбалетчик-снайпер
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #39</span>
+                    Сапёр-подрывник
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #40</span>
+                    Травник-исцелитель
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #41</span>
+                    Заклинатель рун
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #42</span>
+                    Хранитель времени
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #43</span>
+                    Проклятый рыцарь
+                </button>
+                
+                <button class="build-btn">
+                    <span class="build-number">Билд #44</span>
+                    Экспериментальный гибрид
+                </button>
+            </div>
+        </section>
+        
+        <!-- Скриншоты -->
+        <section id="screenshots" class="section">
+            <h1>Игровые скриншоты</h1>
+            <p>Здесь будут размещены скриншоты игровых моментов...</p>
+        </section>
+        
+        <!-- Контакты -->
+        <section id="contacts" class="section">
+            <h1>Контакты</h1>
+            <p>По вопросам сотрудничества: guides@allods-community.com</p>
+        </section>
+    </div>
+
+    <script>
+        // Переключение разделов
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Убираем активный класс у всех ссылок
+                document.querySelectorAll('.nav-link').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                // Добавляем активный класс текущей ссылке
+                this.classList.add('active');
+                
+                // Скрываем все разделы
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Показываем выбранный раздел
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Плавная прокрутка к верху
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Обработка кликов по билдам
+        document.querySelectorAll('.build-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const buildNum = this.querySelector('.build-number').textContent;
+                const buildName = this.textContent.replace(buildNum, '').trim();
+                
+                // Создаем красивое всплывающее окно
+                const popup = document.createElement('div');
+                popup.style.position = 'fixed';
+                popup.style.top = '50%';
+                popup.style.left = '50%';
+                popup.style.transform = 'translate(-50%, -50%)';
+                popup.style.backgroundColor = 'rgba(30, 15, 50, 0.95)';
+                popup.style.padding = '2rem';
+                popup.style.borderRadius = '10px';
+                popup.style.border = '1px solid #a45bd6';
+                popup.style.boxShadow = '0 0 20px rgba(164, 91, 214, 0.7)';
+                popup.style.zIndex = '1000';
+                popup.style.maxWidth = '90%';
+                popup.style.width = '400px';
+                popup.style.textAlign = 'center';
+                popup.style.animation = 'fadeIn 0.3s ease-out';
+                
+                popup.innerHTML = `
+                    <h3 style="color: #ff2d6d; margin-bottom: 1rem;">${buildNum}</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">${buildName}</p>
+                    <p style="margin-bottom: 1.5rem; color: #c0c0ff;">Подробное руководство по этому билду загружается...</p>
+                    <button id="closePopup" style="
+                        background: linear-gradient(45deg, #ff2d6d, #ff1d63);
+                        color: white;
+                        border: none;
+                        padding: 0.7rem 1.5rem;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        transition: all 0.3s;
+                    ">Закрыть</button>
+                `;
+                
+                document.body.appendChild(popup);
+                
+                // Закрытие попапа
+                document.getElementById('closePopup').addEventListener('click', function() {
+                    document.body.removeChild(popup);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
