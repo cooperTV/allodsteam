@@ -2,7 +2,7 @@
     /* Подключение шрифта Allods West */
     @font-face {
         font-family: 'Allods West';
-        src: url('assets/fonts/allodswest.ttf') format('truetype');
+        src: url('assets/fonts/allods_west.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
