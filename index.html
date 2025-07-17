@@ -27,6 +27,45 @@
         
         /* Остальные ваши стили... */
     </style>
+
+    <div id="news-container"></div>
+
+<script>
+async function loadNews() {
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  const targetUrl = 'https://allods.ru/news.php';
+  
+  try {
+    const response = await fetch(proxyUrl + targetUrl);
+    const text = await response.text();
+    
+    // Создаем виртуальный DOM для парсинга
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/html');
+    
+    // Извлекаем новости (адаптируйте под структуру сайта)
+    const newsItems = doc.querySelectorAll('.news-item');
+    let newsHTML = '';
+    
+    newsItems.forEach(item => {
+      newsHTML += `
+        <div class="news-item">
+          <h3>${item.querySelector('h3').innerText}</h3>
+          <p>${item.querySelector('.news-date').innerText}</p>
+          <div>${item.querySelector('.news-preview').innerHTML}</div>
+          <a href="${item.querySelector('a').href}">Подробнее</a>
+        </div>
+      `;
+    });
+    
+    document.getElementById('news-container').innerHTML = newsHTML;
+  } catch (error) {
+    console.error('Ошибка загрузки новостей:', error);
+  }
+}
+
+loadNews();
+</script>
     
     <!-- Подключение стилей (ставьте ЗДЕСЬ) -->
     <link rel="stylesheet" href="assets/css/style.css">
