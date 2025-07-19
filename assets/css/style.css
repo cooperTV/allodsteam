@@ -327,3 +327,13 @@ h1::after {
     text-align: center;
     max-width: 280px;
 }
+
+@media (max-width: 768px) {
+    .builds-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .build-image {
+        max-width: 220px;
+    }
+}
