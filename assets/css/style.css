@@ -80,6 +80,18 @@ nav a:hover, nav a.active {
     box-shadow: 0 0 10px rgba(253, 144, 19, 0.5);
 }
 
+/* Гарантирует, что раздел builds будет видимым */
+#builds {
+    position: relative;
+    padding-top: 20px; /* Добавляет отступ сверху */
+}
+
+/* Улучшает видимость активного раздела */
+.section.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
 /* ===== Основной контейнер ===== */
 .container {
     max-width: 1200px;
