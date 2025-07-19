@@ -261,3 +261,39 @@ h1::after {
         font-size: 2rem;
     }
 }
+
+/* ===== Календарь событий ===== */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.calendar-event {
+    background: rgba(74, 56, 45, 0.7);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #fd9013;
+    transition: all 0.3s;
+}
+
+.calendar-event:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(253, 144, 19, 0.3);
+}
+
+.calendar-event h3 {
+    color: #ffcc80;
+    margin-bottom: 0.5rem;
+}
+
+.event-date {
+    color: #fd9013;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.event-description {
+    color: #f5e6d8;
+}
