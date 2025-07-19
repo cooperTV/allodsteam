@@ -297,3 +297,33 @@ h1::after {
 .event-description {
     color: #f5e6d8;
 }
+
+/* Стили для изображений билдов */
+.build-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.build-image {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #fd9013;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.build-image:hover {
+    transform: scale(1.03);
+}
+
+.build-desc {
+    color: #f5e6d8;
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 280px;
+}
