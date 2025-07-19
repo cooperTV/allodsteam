@@ -24,14 +24,10 @@
             font-family: 'Allods West', fantasy, sans-serif;
             letter-spacing: 0.5px;
         }
-        
-        /* Остальные ваши стили... */
     </style>
     
-    <!-- Подключение стилей (ставьте ЗДЕСЬ) -->
+    <!-- Подключение стилей -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Другие скрипты/стили -->
 </head>
 <body>
     <!-- Навигация -->
@@ -39,6 +35,7 @@
         <ul>
             <li><a href="#" class="nav-link active" data-section="home">Главная</a></li>
             <li><a href="#" class="nav-link" data-section="news">Новости</a></li>
+            <li><a href="#" class="nav-link" data-section="calendar">Календарь</a></li>
             <li><a href="#" class="nav-link" data-section="builds">Билды</a></li>
             <li><a href="#" class="nav-link" data-section="screenshots">Творчество</a></li>
             <li><a href="#" class="nav-link" data-section="contacts">Контакты</a></li>
@@ -51,18 +48,18 @@
             <h1>Аллоды Онлайн - База знаний</h1>
             <p>Добро пожаловать на сайт Гильдии Наследие Вечных, сервер Наследие Богов (Владыки Астрала). Нашу коллекция билдов и руководств по Аллоды Онлайн. Здесь вы найдёте сборки билдов для различных классов и стилей игры.</p>
             <p>Отдельная благодарность игрокам, чей труд внёс значительный вклад в развитие гильдии: Войслава, ВЕРКИРИЙ, ДияМира, ЛозиФолл, Феллхаммер.</p>
-        </section>
-        <div class="game-description">
-    <h2>Что предлагают Аллоды Онлайн</h2>
-    <p>Это условно бесплатная MMORPG с уникальной вселенной, где магия встречается с технологиями.</p>
-    <ul>
-        <li>➡️ <strong>Гибкую систему классов</strong> — в игре присутствую 11 классов</li>
-        <li>➡️ <strong>Астральные корабли</strong> — исследуйте астральные острова с друзьями</li>
-        <li>➡️ <strong>Гильдейские войны</strong> — сражайтесь против других гильдий</li>
-        <li>➡️ <strong>12 рас</strong> — от благородных Эльфов, дерзких Орков, восставших Зем и до хитрых Гибберлигов</li>
-    </ul>
-    <p>Не смогли найти ответ на свой вопрос? Пишите в телеграмм.</p>
-</div>
+            
+            <div class="game-description">
+                <h2>Что предлагают Аллоды Онлайн</h2>
+                <p>Это условно бесплатная MMORPG с уникальной вселенной, где магия встречается с технологиями.</p>
+                <ul>
+                    <li>➡️ <strong>Гибкую систему классов</strong> — в игре присутствую 11 классов</li>
+                    <li>➡️ <strong>Астральные корабли</strong> — исследуйте астральные острова с друзьями</li>
+                    <li>➡️ <strong>Гильдейские войны</strong> — сражайтесь против других гильдий</li>
+                    <li>➡️ <strong>12 рас</strong> — от благородных Эльфов, дерзких Орков, восставших Зем и до хитрых Гибберлигов</li>
+                </ul>
+                <p>Не смогли найти ответ на свой вопрос? Пишите в телеграмм.</p>
+            </div>
         </section>
         
         <!-- Новости -->
@@ -71,6 +68,134 @@
             <p>19.07.2025 - подписаны все билды по классам</p>
             <p>19.07.2025 - изменён цвет сайта</p>
         </section>
+        
+        <!-- Календарь -->
+        <section id="calendar" class="section">
+            <h1>Календарь событий</h1>
+            <div class="calendar-grid">
+                <div class="calendar-event">
+                    <h3>Гильдейский рейд</h3>
+                    <p class="event-date">25.07.2025 20:00</p>
+                    <p class="event-description">Еженедельный рейд по подземельям Астрала</p>
+                </div>
+                <div class="calendar-event">
+                    <h3>ПВП-турнир</h3>
+                    <p class="event-date">28.07.2025 19:00</p>
+                    <p class="event-description">Турнир 3х3 на Арене Чемпионов</p>
+                </div>
+                <div class="calendar-event">
+                    <h3>Фарм ресурсов</h3>
+                    <p class="event-date">30.07.2025 18:00</p>
+                    <p class="event-description">Совместный фарм астральных ресурсов</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Билды -->
+        <section id="builds" class="section">
+            <h1>Коллекция билдов (44 варианта)</h1>
+            <p>Выберите интересующий вас билд из списка:</p>
+            
+            <div class="builds-grid">
+                <!-- Билды 1-44 (оставьте ваш существующий код) -->
+                <!-- ... -->
+            </div>
+        </section>
+        
+        <!-- Творчество -->
+        <section id="screenshots" class="section">
+            <h1>Игровое творчество</h1>
+            <p>Здесь будут размещено творчество игровых моментов...</p>
+        </section>
+        
+        <!-- Контакты -->
+        <section id="contacts" class="section">
+            <h1>Контакты</h1>
+            <p>По всем вопросам: <a href="t.me/ALLODQ">Телеграмм</a></p>
+        </section>
+    </div>
+
+    <script>
+        // Переключение разделов
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Убираем активный класс у всех ссылок
+                document.querySelectorAll('.nav-link').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                // Добавляем активный класс текущей ссылке
+                this.classList.add('active');
+                
+                // Скрываем все разделы
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Показываем выбранный раздел
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Плавная прокрутка к верху
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Обработка кликов по билдам
+        document.querySelectorAll('.build-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const buildNum = this.querySelector('.build-number').textContent;
+                const buildName = this.textContent.replace(buildNum, '').trim();
+                
+                // Создаем красивое всплывающее окно
+                const popup = document.createElement('div');
+                popup.style.position = 'fixed';
+                popup.style.top = '50%';
+                popup.style.left = '50%';
+                popup.style.transform = 'translate(-50%, -50%)';
+                popup.style.backgroundColor = 'rgba(30, 15, 50, 0.95)';
+                popup.style.padding = '2rem';
+                popup.style.borderRadius = '10px';
+                popup.style.border = '1px solid #a45bd6';
+                popup.style.boxShadow = '0 0 20px rgba(164, 91, 214, 0.7)';
+                popup.style.zIndex = '1000';
+                popup.style.maxWidth = '90%';
+                popup.style.width = '400px';
+                popup.style.textAlign = 'center';
+                popup.style.animation = 'fadeIn 0.3s ease-out';
+                
+                popup.innerHTML = `
+                    <h3 style="color: #ff2d6d; margin-bottom: 1rem;">${buildNum}</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">${buildName}</p>
+                    <p style="margin-bottom: 1.5rem; color: #c0c0ff;">Подробное руководство по этому билду загружается...</p>
+                    <button id="closePopup" style="
+                        background: linear-gradient(45deg, #ff2d6d, #ff1d63);
+                        color: white;
+                        border: none;
+                        padding: 0.7rem 1.5rem;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        transition: all 0.3s;
+                    ">Закрыть</button>
+                `;
+                
+                document.body.appendChild(popup);
+                
+                // Закрытие попапа
+                document.getElementById('closePopup').addEventListener('click', function() {
+                    document.body.removeChild(popup);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
         
         <!-- Билды -->
         <section id="builds" class="section">
