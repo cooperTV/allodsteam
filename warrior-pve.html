@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!-- Мета-информация -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Воин - ПВЕ | Наследие Вечных</title>
     
-    <!-- Подключение шрифта -->
+    <!-- Шрифт Allods West -->
     <style>
         @font-face {
             font-family: 'Allods West';
@@ -29,7 +30,7 @@
     
     <!-- Дополнительные стили для страницы билда -->
     <style>
-        .build-details-page {
+        .build-details-container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1.5rem;
@@ -40,6 +41,12 @@
             margin-bottom: 2.5rem;
             padding-bottom: 1rem;
             position: relative;
+        }
+        
+        .build-header h1 {
+            color: #ffcc80;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
         
         .build-header::after {
@@ -57,19 +64,19 @@
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 2rem;
-            margin-top: 2rem;
         }
         
         .build-image-container {
             text-align: center;
         }
         
-        .build-main-image {
+        .build-image {
             width: 100%;
             max-width: 280px;
+            height: auto;
             border-radius: 8px;
             border: 2px solid #fd9013;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         
         .build-stats {
@@ -80,30 +87,34 @@
             border-left: 4px solid #fd9013;
         }
         
+        .build-description {
+            background: rgba(74, 56, 45, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #fd9013;
+        }
+        
         .back-link {
             display: inline-block;
             margin-top: 2rem;
             color: #ffcc80;
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 5px;
             background: rgba(253, 144, 19, 0.2);
+            border: 1px solid transparent;
+            transition: all 0.3s;
         }
         
         .back-link:hover {
             background: rgba(253, 144, 19, 0.4);
+            border-color: #fd9013;
             color: #ffffff;
         }
         
         @media (max-width: 768px) {
             .build-content {
                 grid-template-columns: 1fr;
-            }
-            
-            .build-image-container {
-                text-align: center;
             }
         }
     </style>
@@ -121,7 +132,7 @@
         </ul>
     </nav>
     
-    <div class="build-details-page">
+    <div class="build-details-container">
         <div class="build-header">
             <h1>Билд #1: Воин - ПВЕ</h1>
             <p>Танк с высокой выживаемостью в PvE</p>
@@ -129,42 +140,47 @@
         
         <div class="build-content">
             <div class="build-image-container">
-                <img src="../assets/images/builds/вар.png" alt="Воин ПВЕ" class="build-main-image">
+                <img src="../assets/images/builds/вар.png" alt="Воин ПВЕ" class="build-image">
                 
                 <div class="build-stats">
                     <h3>Характеристики билда</h3>
                     <ul>
-                        <li><strong>Роль:</strong> Танк</li>
-                        <li><strong>Сложность:</strong> Низкая</li>
-                        <li><strong>PvE:</strong> ★★★★★</li>
-                        <li><strong>PvP:</strong> ★★☆☆☆</li>
+                        <li><strong>Роль:</strong> Основной танк</li>
+                        <li><strong>Сложность:</strong> ★★☆☆☆</li>
+                        <li><strong>Выживаемость:</strong> ★★★★★</li>
+                        <li><strong>Урон:</strong> ★★☆☆☆</li>
+                        <li><strong>Рейтинг PvE:</strong> 9.5/10</li>
                     </ul>
                 </div>
             </div>
             
             <div class="build-description">
-                <h2>Описание билда</h2>
+                <h2>Подробное описание</h2>
                 <p>Этот билд ориентирован на максимальную выживаемость в PvE-контенте. Идеально подходит для танкования в рейдах и сложных подземельях.</p>
                 
-                <h3>Преимущества:</h3>
+                <h3>Ключевые особенности:</h3>
                 <ul>
-                    <li>Высокая устойчивость к урону</li>
-                    <li>Хороший самоотхил</li>
+                    <li>Высокая устойчивость к физическому и магическому урону</li>
+                    <li>Эффективные навыки самоисцеления</li>
+                    <li>Усиленная защита группы</li>
                     <li>Простота в освоении</li>
-                    <li>Универсальность для большинства PvE-активностей</li>
                 </ul>
                 
                 <h3>Рекомендуемые характеристики:</h3>
-                <div class="game-description">
-                    <ul>
-                        <li><strong>Основная характеристика:</strong> Сила</li>
-                        <li><strong>Дополнительно:</strong> Выносливость, Защита</li>
-                        <li><strong>Критический удар:</strong> Не требуется</li>
-                    </ul>
-                </div>
+                <ul>
+                    <li><strong>Основная характеристика:</strong> Сила</li>
+                    <li><strong>Вторичные характеристики:</strong> Выносливость, Защита</li>
+                    <li><strong>Критический удар:</strong> Минимальный приоритет</li>
+                </ul>
                 
                 <h3>Рекомендуемая экипировка:</h3>
-                <p>Комплект "Страж Утгарда" (мифический) с акцентом на показатели защиты и здоровья.</p>
+                <p>Комплект "Страж Утгарда" (мифический) с акцентом на показатели защиты и здоровья. Предпочтительные характеристики на предметах:</p>
+                <ul>
+                    <li>+ Защита</li>
+                    <li>+ Здоровье</li>
+                    <li>+ Сопротивление урону</li>
+                    <li>+ Скорость восстановления</li>
+                </ul>
             </div>
         </div>
         
