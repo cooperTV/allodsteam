@@ -145,6 +145,7 @@ h1::after {
     box-shadow: 0 8px 25px rgba(250, 78, 3, 0.6);
 }
 
+
 .build-btn::before {
     content: '';
     position: absolute;
@@ -169,6 +170,16 @@ h1::after {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
     color: rgba(255, 255, 255, 0.8);
+}
+
+.build-btn {
+    /* ... существующие стили кнопки ... */
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ===== Секции ===== */
