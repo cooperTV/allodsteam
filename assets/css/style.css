@@ -1,7 +1,7 @@
 /* ===== Шрифты и базовые стили ===== */
 @font-face {
     font-family: 'Allods West';
-    src: url('assets/fonts/allods_west.ttf') format('truetype');
+    src: url('../fonts/allods_west.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
