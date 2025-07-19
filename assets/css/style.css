@@ -80,6 +80,50 @@ nav a:hover, nav a.active {
     box-shadow: 0 0 10px rgba(253, 144, 19, 0.5);
 }
 
+/* Стили для фиксированной кнопки "Назад" */
+.fixed-back-link {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 90;
+    text-align: center;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: rgba(253, 144, 19, 0.9);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    border: 1px solid #fd9013;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.back-link:hover {
+    background-color: rgba(253, 144, 19, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Адаптивность для кнопки */
+@media (max-width: 768px) {
+    .fixed-back-link {
+        width: 90%;
+    }
+    
+    .back-link {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}
+
 /* Гарантирует, что раздел builds будет видимым */
 #builds {
     position: relative;
