@@ -4,26 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Воин - ПВЕ | Наследие Вечных</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Подключение шрифта -->
     <style>
-        /* Дополнительные стили для страницы билда */
-        .build-page {
-            max-width: 1000px;
+        @font-face {
+            font-family: 'Allods West';
+            src: url('../assets/fonts/allods_west.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Allods West', fantasy, sans-serif;
+            letter-spacing: 0.5px;
+        }
+    </style>
+    
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Дополнительные стили для страницы билда -->
+    <style>
+        .build-details-page {
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1.5rem;
         }
         
         .build-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid #fd9013;
+            position: relative;
+        }
+        
+        .build-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #fd9013, transparent);
         }
         
         .build-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 300px 1fr;
             gap: 2rem;
+            margin-top: 2rem;
         }
         
         .build-image-container {
@@ -31,50 +65,19 @@
         }
         
         .build-main-image {
-            max-width: 100%;
-            border-radius: 10px;
-            border: 3px solid #fd9013;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 280px;
+            border-radius: 8px;
+            border: 2px solid #fd9013;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         
         .build-stats {
             background: rgba(74, 56, 45, 0.7);
             padding: 1.5rem;
             border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-        
-        .talent-tree {
-            margin-top: 2rem;
-        }
-        
-        .talent-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-        
-        .talent {
-            width: 60px;
-            height: 60px;
-            background: #5a4538;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #fd9013;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .talent:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px #fd9013;
-        }
-        
-        .talent.active {
-            background: #fd9013;
-            color: #382b22;
+            margin-top: 1.5rem;
+            border-left: 4px solid #fd9013;
         }
         
         .back-link {
@@ -84,22 +87,29 @@
             text-decoration: none;
             font-size: 1.1rem;
             transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background: rgba(253, 144, 19, 0.2);
         }
         
         .back-link:hover {
-            color: #fd9013;
-            text-decoration: underline;
+            background: rgba(253, 144, 19, 0.4);
+            color: #ffffff;
         }
         
         @media (max-width: 768px) {
             .build-content {
                 grid-template-columns: 1fr;
             }
+            
+            .build-image-container {
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Навигация (такая же как на главной) -->
+    <!-- Навигация (как в index.html) -->
     <nav>
         <ul>
             <li><a href="../index.html" class="nav-link">Главная</a></li>
@@ -111,27 +121,28 @@
         </ul>
     </nav>
     
-    <div class="build-page">
+    <div class="build-details-page">
         <div class="build-header">
             <h1>Билд #1: Воин - ПВЕ</h1>
-            <p>Танк с высокой выживаемостью в PvE-контенте</p>
+            <p>Танк с высокой выживаемостью в PvE</p>
         </div>
         
         <div class="build-content">
             <div class="build-image-container">
                 <img src="../assets/images/builds/вар.png" alt="Воин ПВЕ" class="build-main-image">
+                
                 <div class="build-stats">
-                    <h3>Основные характеристики</h3>
+                    <h3>Характеристики билда</h3>
                     <ul>
-                        <li>Выносливость: ★★★★★</li>
-                        <li>Урон: ★★☆☆☆</li>
-                        <li>Поддержка: ★★☆☆☆</li>
-                        <li>Сложность: ★★☆☆☆</li>
+                        <li><strong>Роль:</strong> Танк</li>
+                        <li><strong>Сложность:</strong> Низкая</li>
+                        <li><strong>PvE:</strong> ★★★★★</li>
+                        <li><strong>PvP:</strong> ★★☆☆☆</li>
                     </ul>
                 </div>
             </div>
             
-            <div class="build-details">
+            <div class="build-description">
                 <h2>Описание билда</h2>
                 <p>Этот билд ориентирован на максимальную выживаемость в PvE-контенте. Идеально подходит для танкования в рейдах и сложных подземельях.</p>
                 
@@ -143,46 +154,21 @@
                     <li>Универсальность для большинства PvE-активностей</li>
                 </ul>
                 
-                <h3>Недостатки:</h3>
-                <ul>
-                    <li>Низкий урон</li>
-                    <li>Ограниченная мобильность</li>
-                </ul>
+                <h3>Рекомендуемые характеристики:</h3>
+                <div class="game-description">
+                    <ul>
+                        <li><strong>Основная характеристика:</strong> Сила</li>
+                        <li><strong>Дополнительно:</strong> Выносливость, Защита</li>
+                        <li><strong>Критический удар:</strong> Не требуется</li>
+                    </ul>
+                </div>
                 
                 <h3>Рекомендуемая экипировка:</h3>
                 <p>Комплект "Страж Утгарда" (мифический) с акцентом на показатели защиты и здоровья.</p>
-                
-                <div class="talent-tree">
-                    <h3>Дерево талантов</h3>
-                    <div class="talent-row">
-                        <div class="talent active">1</div>
-                        <div class="talent active">2</div>
-                        <div class="talent">3</div>
-                    </div>
-                    <div class="talent-row">
-                        <div class="talent active">4</div>
-                        <div class="talent">5</div>
-                        <div class="talent active">6</div>
-                    </div>
-                    <div class="talent-row">
-                        <div class="talent active">7</div>
-                        <div class="talent active">8</div>
-                        <div class="talent">9</div>
-                    </div>
-                </div>
             </div>
         </div>
         
         <a href="../index.html#builds" class="back-link">← Вернуться к списку билдов</a>
     </div>
-    
-    <script>
-        // Простая логика для талантов
-        document.querySelectorAll('.talent').forEach(talent => {
-            talent.addEventListener('click', function() {
-                this.classList.toggle('active');
-            });
-        });
-    </script>
 </body>
 </html>
