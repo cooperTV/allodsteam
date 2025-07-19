@@ -554,5 +554,18 @@
         });
         
     </script>
+
+    <script>
+// Плавный скролл к якорю
+document.addEventListener('DOMContentLoaded', function() {
+    if(window.location.hash === '#builds') {
+        const target = document.getElementById('builds');
+        if(target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+</script>
+    
 </body>
 </html>
