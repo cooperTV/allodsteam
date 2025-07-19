@@ -553,53 +553,6 @@
             });
         });
         
-        // Обработка кликов по билдам
-        document.querySelectorAll('.build-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const buildNum = this.querySelector('.build-number').textContent;
-                const buildName = this.textContent.replace(buildNum, '').trim();
-                
-                // Создаем красивое всплывающее окно
-                const popup = document.createElement('div');
-                popup.style.position = 'fixed';
-                popup.style.top = '50%';
-                popup.style.left = '50%';
-                popup.style.transform = 'translate(-50%, -50%)';
-                popup.style.backgroundColor = 'rgba(30, 15, 50, 0.95)';
-                popup.style.padding = '2rem';
-                popup.style.borderRadius = '10px';
-                popup.style.border = '1px solid #a45bd6';
-                popup.style.boxShadow = '0 0 20px rgba(164, 91, 214, 0.7)';
-                popup.style.zIndex = '1000';
-                popup.style.maxWidth = '90%';
-                popup.style.width = '400px';
-                popup.style.textAlign = 'center';
-                popup.style.animation = 'fadeIn 0.3s ease-out';
-                
-                popup.innerHTML = `
-                    <h3 style="color: #ff2d6d; margin-bottom: 1rem;">${buildNum}</h3>
-                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">${buildName}</p>
-                    <p style="margin-bottom: 1.5rem; color: #c0c0ff;">Подробное руководство по этому билду загружается...</p>
-                    <button id="closePopup" style="
-                        background: linear-gradient(45deg, #ff2d6d, #ff1d63);
-                        color: white;
-                        border: none;
-                        padding: 0.7rem 1.5rem;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        font-weight: 600;
-                        transition: all 0.3s;
-                    ">Закрыть</button>
-                `;
-                
-                document.body.appendChild(popup);
-                
-                // Закрытие попапа
-                document.getElementById('closePopup').addEventListener('click', function() {
-                    document.body.removeChild(popup);
-                });
-            });
-        });
     </script>
 </body>
 </html>
