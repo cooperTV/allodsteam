@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билд #3: Воин - Мейн Танк | Наследие Вечных</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Стили из warrior-pve.html (можно вынести в отдельный CSS) */
+        .build-details-container { max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; }
+        .build-header { text-align: center; margin-bottom: 2.5rem; padding-bottom: 1rem; position: relative; }
+        .build-header h1 { color: #ffcc80; font-size: 2.5rem; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .build-header::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 3px; background: linear-gradient(to right, transparent, #fd9013, transparent); }
+        .build-content { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; }
+        .build-image { width: 100%; max-width: 280px; border: 3px solid #fd9013; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .build-stats, .build-description { background: rgba(74, 56, 45, 0.7); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #fd9013; }
+        @media (max-width: 768px) { .build-content { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <!-- Навигация (как в warrior-pve.html) -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">Главная</a></li>
+            <li><a href="index.html#news" class="nav-link">Новости</a></li>
+            <li><a href="index.html#builds" class="nav-link">Билды</a></li>
+            <!-- Остальные пункты меню -->
+        </ul>
+    </nav>
 
+    <!-- Контент билда -->
+    <div class="build-details-container">
+        <div class="build-header">
+            <h1>Билд #3: Воин - Мейн Танк</h1>
+            <p>Основной танк для рейдов с максимальной защитой</p>
+        </div>
+
+        <div class="build-content">
+            <div class="build-image-container">
+                <img src="assets/images/builds/war-main-tank.png" alt="Воин - Мейн Танк" class="build-image">
+                <div class="build-stats">
+                    <h3>Характеристики</h3>
+                    <ul>
+                        <li><strong>Роль:</strong> Основной танк</li>
+                        <li><strong>Сложность:</strong> ★★★☆☆</li>
+                        <li><strong>Выживаемость:</strong> ★★★★★</li>
+                        <li><strong>Угроза:</strong> ★★★★☆</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="build-description">
+                <h2>Описание билда</h2>
+                <p>Специализация для удержания агро в рейдах и сложных подземельях. Акцент на защиту и контроль.</p>
+                
+                <h3>Экипировка</h3>
+                <ul>
+                    <li><strong>Шлем:</strong> "Твердыня Утгарда" (+Защита, +Здоровье)</li>
+                    <li><strong>Доспех:</strong> "Рунная Броня" (+Сопротивление магии)</li>
+                </ul>
+
+                <h3>Ротация способностей</h3>
+                <ol>
+                    <li>Удар щитом (генерация угрозы)</li>
+                    <li>Рывок (удержание агро)</li>
+                    <li>Железная Кожа (уменьшение урона)</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Кнопка "Назад" -->
+        <div class="fixed-back-link">
+            <a href="index.html#builds" class="back-link">← Назад к списку билдов</a>
+        </div>
+    </div>
+</body>
+</html>
