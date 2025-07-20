@@ -1,3 +1,34 @@
+/* Шапка сайта - простой вариант */
+.site-header {
+    background: linear-gradient(to right, #4a382d, #5a4538);
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 2px solid #fd9013;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.header-content h1 {
+    color: #ffcc80;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.header-content p {
+    color: #f5e6d8;
+    font-size: 1.2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    .header-content p {
+        font-size: 1rem;
+    }
+}
+
 /* ===== Шапка сайта (исправленная версия) ===== */
 .site-header {
     width: 100%;
